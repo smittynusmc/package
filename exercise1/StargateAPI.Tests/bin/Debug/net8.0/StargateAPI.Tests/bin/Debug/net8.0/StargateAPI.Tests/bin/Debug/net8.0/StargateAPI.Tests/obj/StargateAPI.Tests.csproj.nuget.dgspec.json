@@ -1,0 +1,197 @@
+{
+  "format": 1,
+  "restore": {
+    "C:\\Users\\AdamA\\OneDrive\\Documents\\Apps\\tech_exercise_v.0.0.4\\tech_exercise\\package\\exercise1\\api\\StargateAPI.Tests\\StargateAPI.Tests.csproj": {}
+  },
+  "projects": {
+    "C:\\Users\\AdamA\\OneDrive\\Documents\\Apps\\tech_exercise_v.0.0.4\\tech_exercise\\package\\exercise1\\api\\StargateAPI.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\AdamA\\OneDrive\\Documents\\Apps\\tech_exercise_v.0.0.4\\tech_exercise\\package\\exercise1\\api\\StargateAPI.csproj",
+        "projectName": "StargateAPI",
+        "projectPath": "C:\\Users\\AdamA\\OneDrive\\Documents\\Apps\\tech_exercise_v.0.0.4\\tech_exercise\\package\\exercise1\\api\\StargateAPI.csproj",
+        "packagesPath": "C:\\Users\\AdamA\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\AdamA\\OneDrive\\Documents\\Apps\\tech_exercise_v.0.0.4\\tech_exercise\\package\\exercise1\\api\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\AdamA\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        }
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "dependencies": {
+            "Dapper": {
+              "target": "Package",
+              "version": "[2.1.35, )"
+            },
+            "MediatR": {
+              "target": "Package",
+              "version": "[12.2.0, )"
+            },
+            "Microsoft.AspNetCore.OpenApi": {
+              "target": "Package",
+              "version": "[8.0.4, )"
+            },
+            "Microsoft.EntityFrameworkCore.Design": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[9.0.9, )"
+            },
+            "Microsoft.EntityFrameworkCore.Sqlite": {
+              "target": "Package",
+              "version": "[9.0.9, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[8.0.4, )"
+            },
+            "Swashbuckle.AspNetCore": {
+              "target": "Package",
+              "version": "[6.5.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.317/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\AdamA\\OneDrive\\Documents\\Apps\\tech_exercise_v.0.0.4\\tech_exercise\\package\\exercise1\\api\\StargateAPI.Tests\\StargateAPI.Tests.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\AdamA\\OneDrive\\Documents\\Apps\\tech_exercise_v.0.0.4\\tech_exercise\\package\\exercise1\\api\\StargateAPI.Tests\\StargateAPI.Tests.csproj",
+        "projectName": "StargateAPI.Tests",
+        "projectPath": "C:\\Users\\AdamA\\OneDrive\\Documents\\Apps\\tech_exercise_v.0.0.4\\tech_exercise\\package\\exercise1\\api\\StargateAPI.Tests\\StargateAPI.Tests.csproj",
+        "packagesPath": "C:\\Users\\AdamA\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\AdamA\\OneDrive\\Documents\\Apps\\tech_exercise_v.0.0.4\\tech_exercise\\package\\exercise1\\api\\StargateAPI.Tests\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\AdamA\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {
+              "C:\\Users\\AdamA\\OneDrive\\Documents\\Apps\\tech_exercise_v.0.0.4\\tech_exercise\\package\\exercise1\\api\\StargateAPI.csproj": {
+                "projectPath": "C:\\Users\\AdamA\\OneDrive\\Documents\\Apps\\tech_exercise_v.0.0.4\\tech_exercise\\package\\exercise1\\api\\StargateAPI.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        }
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "dependencies": {
+            "FluentAssertions": {
+              "target": "Package",
+              "version": "[8.6.0, )"
+            },
+            "MediatR": {
+              "target": "Package",
+              "version": "[13.0.0, )"
+            },
+            "Microsoft.EntityFrameworkCore.Sqlite": {
+              "target": "Package",
+              "version": "[9.0.9, )"
+            },
+            "Microsoft.NET.Test.Sdk": {
+              "target": "Package",
+              "version": "[17.14.1, )"
+            },
+            "coverlet.collector": {
+              "target": "Package",
+              "version": "[6.0.0, )"
+            },
+            "xunit": {
+              "target": "Package",
+              "version": "[2.9.3, )"
+            },
+            "xunit.runner.visualstudio": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[3.1.4, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.317/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

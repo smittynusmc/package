@@ -1,0 +1,241 @@
+<div class="page">
+  <!-- Top bar -->
+  <header class="hero">
+    <div class="brand">
+      <div class="logo">🛰️</div>
+      <div>
+        <h1 class="title">Stargate Admin</h1>
+        <p class="subtitle">People & Astronaut Duty Management</p>
+      </div>
+    </div>
+    <div class="hero-actions">
+      <button class="btn btn-primary" (click)="loadPeople()">Load All People</button>
+    </div>
+  </header>
+
+  <!-- Content grid -->
+  <main class="grid">
+    <!-- People -->
+    <section class="card">
+      <div class="card-header">
+        <h2>People</h2>
+      </div>
+      <div class="card-body">
+        <ng-container *ngIf="people?.length; else noPeople">
+          <div class="table-wrap">
+            <table class="table table-striped table-hover">
+              <thead>
+                <tr>
+                  <th>Id</th>
+                  <th>Name</th>
+                  <th>Current Rank</th>
+                  <th>Current Duty</th>
+                  <th>Start</th>
+                  <th>End</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let p of people">
+                  <td>{{ p.personId }}</td>
+                  <td>{{ p.name }}</td>
+                  <td>{{ p.currentRank }}</td>
+                  <td>{{ p.currentDutyTitle }}</td>
+                  <td>{{ p.careerStartDate || '—' }}</td>
+                  <td>{{ p.careerEndDate || '—' }}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </ng-container>
+        <ng-template #noPeople>
+          <div class="empty">
+            No people loaded yet. Click <strong>Load All People</strong> to fetch the list.
+          </div>
+        </ng-template>
+      </div>
+    </section>
+
+    <!-- Find person -->
+    <section class="card">
+      <div class="card-header">
+        <h2>Find Person</h2>
+      </div>
+      <div class="card-body">
+        <form [formGroup]="findPersonForm" (ngSubmit)="findPerson()" class="form-inline">
+          <label class="form-field">
+            <span class="label">Name</span>
+            <input class="input" placeholder="Search by name…" formControlName="name" />
+          </label>
+          <button class="btn btn-primary" type="submit">Find</button>
+        </form>
+
+        <pre *ngIf="personResult" class="pre-json">{{ personResult | json }}</pre>
+      </div>
+    </section>
+
+    <!-- Add person -->
+    <section class="card">
+      <div class="card-header">
+        <h2>Add Person</h2>
+      </div>
+      <div class="card-body">
+        <form [formGroup]="addPersonForm" (ngSubmit)="addPerson()" class="form-inline">
+          <label class="form-field">
+            <span class="label">Name</span>
+            <input class="input" placeholder="e.g. Samantha Carter" formControlName="name" />
+          </label>
+
+          <div *ngIf="addPersonForm.get('name')?.errors?.['duplicate']" class="error">
+            {{ addPersonForm.get('name')?.errors?.['duplicate'] || 'That name already exists.' }}
+          </div>
+
+          <button class="btn btn-success" type="submit">Save Name</button>
+        </form>
+      </div>
+    </section>
+
+    <!-- Update person -->
+    <section class="card">
+      <div class="card-header">
+        <h2>Update Person By Name</h2>
+      </div>
+      <div class="card-body">
+        <form [formGroup]="updateByNameForm" (ngSubmit)="updateByName()" class="form-grid">
+          <label class="form-field">
+            <span class="label">Current Name</span>
+            <input class="input" placeholder="Current name" formControlName="currentName" />
+          </label>
+          <label class="form-field">
+            <span class="label">New Name</span>
+            <input class="input" placeholder="New name" formControlName="newName" />
+          </label>
+          <div class="grid-actions">
+            <button class="btn btn-secondary" type="submit">Update</button>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <!-- Astronaut duties -->
+    <section class="card card-wide">
+      <div class="card-header">
+        <h2>Astronaut Duties</h2>
+      </div>
+      <div class="card-body">
+        <div class="subsection">
+          <h3>Find Duties by Name</h3>
+          <form [formGroup]="findDutiesForm" (ngSubmit)="findDuties()" class="form-inline">
+            <label class="form-field">
+              <span class="label">Person</span>
+              <!-- reuse the SAME component you used for Add Duty -->
+              <people-select [people]="people" formControlName="personId"></people-select>
+            </label>
+            <button class="btn btn-primary" type="submit">Find Duties</button>
+          </form>
+
+          <!-- Replace the old <pre> with everything below -->
+          <ng-container *ngIf="dutiesResult as res">
+
+            <!-- Optional: show API message -->
+            <p *ngIf="$any(res)?.message" class="toast">
+              {{ $any(res).message }}
+            </p>
+
+            <!-- Prefer the person object if present; otherwise fall back to raw JSON -->
+            <ng-container *ngIf="$any(res)?.person as p; else rawJson">
+              <article class="duty-card">
+                <header class="duty-head">
+                  <span class="duty-title">{{ p?.name || 'Person' }}</span>
+                  <span class="badge">{{ p?.currentRank || '—' }}</span>
+                </header>
+
+                <div class="duty-meta">
+                  <div class="meta-item">
+                    <span class="meta-label">Current Duty</span>
+                    <span class="meta-value">{{ p?.currentDutyTitle || '—' }}</span>
+                  </div>
+                  <div class="meta-item">
+                    <span class="meta-label">Career Start</span>
+                    <span class="meta-value">
+                      {{ p?.careerStartDate ? (p?.careerStartDate | date:'yyyy-MM-dd') : '—' }}
+                    </span>
+                  </div>
+                  <div class="meta-item">
+                    <span class="meta-label">Career End</span>
+                    <span class="meta-value">
+                      {{ p?.careerEndDate ? (p?.careerEndDate | date:'yyyy-MM-dd') : '—' }}
+                    </span>
+                  </div>
+                  <div class="meta-item">
+                    <span class="meta-label">Id</span>
+                    <span class="meta-value">{{ p?.personId }}</span>
+                  </div>
+                </div>
+
+                <footer class="duty-foot">
+                  <!-- No astronaut records -->
+                  <span class="pill pill-muted" *ngIf="!(p?.currentDutyTitle) && !(p?.careerStartDate)">
+                    No Astronaut Assignment
+                  </span>
+
+                  <!-- Completed -->
+                  <span class="pill pill-muted" *ngIf="!!(p?.careerEndDate)">
+                    Retired
+                  </span>
+
+                  <!-- Active (has some assignment signal but no end) -->
+                  <span class="pill" *ngIf="(!p?.careerEndDate) && (p?.currentDutyTitle || p?.careerStartDate)">
+                    Active Assignment
+                  </span>
+
+                  <!-- Fallback -->
+                  <span class="pill pill-muted"
+                    *ngIf="!(p?.currentDutyTitle) && !(p?.careerStartDate) && !(p?.careerEndDate) === false">
+                    Unknown
+                  </span>
+                </footer>
+
+              </article>
+            </ng-container>
+
+            <ng-template #rawJson>
+              <pre class="pre-json pretty">{{ res | json }}</pre>
+            </ng-template>
+          </ng-container>
+
+        </div>
+
+        <div class="divider"></div>
+
+        <div class="subsection">
+          <h3>Add Duty</h3>
+          <form [formGroup]="addDutyForm" (ngSubmit)="addDuty()" class="form-grid">
+            <label class="form-field">
+              <span class="label">Person</span>
+              <people-select [people]="people" formControlName="personId"></people-select>
+            </label>
+            <label class="form-field">
+              <span class="label">Rank</span>
+              <input class="input" placeholder="e.g. Colonel" formControlName="rank" />
+            </label>
+            <label class="form-field">
+              <span class="label">Duty Title</span>
+              <input class="input" placeholder="e.g. Base Commander" formControlName="dutyTitle" />
+            </label>
+            <label class="form-field">
+              <span class="label">Start</span>
+              <input class="input" type="datetime-local" formControlName="dutyStartDate" />
+            </label>
+
+            <div class="grid-actions">
+              <button class="btn btn-success" type="submit">Create Duty</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Toast/message -->
+  <p *ngIf="message" class="toast">{{ message }}</p>
+</div>
