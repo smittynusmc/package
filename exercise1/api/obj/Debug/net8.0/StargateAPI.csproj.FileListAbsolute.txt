@@ -160,3 +160,4 @@ C:\Users\AdamA\OneDrive\Documents\Apps\tech_exercise_v.0.0.4\tech_exercise\packa
 C:\Users\AdamA\OneDrive\Documents\Apps\tech_exercise_v.0.0.4\tech_exercise\package\exercise1\api\obj\Debug\net8.0\StargateAPI.pdb
 C:\Users\AdamA\OneDrive\Documents\Apps\tech_exercise_v.0.0.4\tech_exercise\package\exercise1\api\obj\Debug\net8.0\StargateAPI.genruntimeconfig.cache
 C:\Users\AdamA\OneDrive\Documents\Apps\tech_exercise_v.0.0.4\tech_exercise\package\exercise1\api\obj\Debug\net8.0\ref\StargateAPI.dll
+C:\Users\AdamA\OneDrive\Documents\Apps\tech_exercise_v.0.0.4\tech_exercise\package\exercise1\api\obj\Debug\net8.0\StargateAPI.sourcelink.json
